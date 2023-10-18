@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import Slider from "./index";
 import { api, DataProvider } from "../../contexts/DataContext";
-import { getMonth } from "../../helpers/Date";
+
 
 const data = {
   focus: [
