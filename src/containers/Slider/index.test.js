@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import Slider from "./index";
 import { api, DataProvider } from "../../contexts/DataContext";
+import { getMonth } from "../../helpers/Date";
 
 const data = {
   focus: [
@@ -26,6 +27,8 @@ const data = {
   ],
 };
 
+
+
 describe("When slider is created", () => {
   it("a list card is displayed", async () => {
     window.console.error = jest.fn();
@@ -36,7 +39,7 @@ describe("When slider is created", () => {
       </DataProvider>
     );
     await screen.findByText("World economic forum");
-    await screen.findByText("janvier");
+    await screen.findByText("janvier")  
     await screen.findByText(
       "Oeuvre à la coopération entre le secteur public et le privé."
     );
