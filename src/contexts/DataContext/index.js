@@ -5,6 +5,7 @@ import {
   useContext,
   useEffect,
   useState,
+  useMemo, // Importez useMemo depuis React
 } from "react";
 
 const DataContext = createContext({});
@@ -19,37 +20,39 @@ export const api = {
 export const DataProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
+  const [last, setLast] = useState(null);
+
   const getData = useCallback(async () => {
     try {
-      setData(await api.loadData());
+      const jsonData = await api.loadData();
+      setData(jsonData);
+      if (Array.isArray(jsonData.events) && jsonData.events.length > 0) {
+        setLast(jsonData.events[jsonData.events.length - 1]);
+      }
     } catch (err) {
       setError(err);
     }
-    
   }, []);
+
   useEffect(() => {
     if (!data) {
       getData();
     }
   }, [data]);
-  
-  
+
+  const contextValue = useMemo(
+    () => ({ data, error, last }),
+    [data, error, last]
+  );
+
   return (
-    <DataContext.Provider
-      // eslint-disable-next-line react/jsx-no-constructed-context-values
-      value={{
-        data,
-        error,
-      }}
-    >
-      {children}
-    </DataContext.Provider>
+    <DataContext.Provider value={contextValue}>{children}</DataContext.Provider>
   );
 };
 
 DataProvider.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
 export const useData = () => useContext(DataContext);
 
