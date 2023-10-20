@@ -25,11 +25,14 @@ export const DataProvider = ({ children }) => {
     } catch (err) {
       setError(err);
     }
+    
   }, []);
   useEffect(() => {
-    if (data) return;
-    getData();
-  });
+    if (!data) {
+      getData();
+    }
+  }, [data]);
+  
   
   return (
     <DataContext.Provider
