@@ -14,7 +14,7 @@ import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
   const { last } = useData();
-  // console.log("Contenu de last :", last);  //  KO UNDIFINED
+ // console.log("Contenu de last :", last);  //  KO UNDIFINED
   return (
     <>
       <header>

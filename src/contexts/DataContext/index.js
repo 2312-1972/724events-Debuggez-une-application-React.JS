@@ -44,7 +44,10 @@ export const DataProvider = ({ children }) => {
     () => ({ data, error, last }),
     [data, error, last]
   );
-
+ // Vérifie si data n'est pas null avant de fournir les données
+ if (data === null) {
+  return <div>Loading...</div>;
+}
   return (
     <DataContext.Provider value={contextValue}>{children}</DataContext.Provider>
   );
