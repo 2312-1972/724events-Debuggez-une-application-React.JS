@@ -10,11 +10,14 @@ import Logo from "../../components/Logo";
 import Icon from "../../components/Icon";
 import Form from "../../containers/Form";
 import Modal from "../../containers/Modal";
+import ModalEvent from "../../containers/ModalEvent";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
   const { last } = useData();
- // console.log("Contenu de last :", last);  //  KO UNDIFINED
+ // console.log("Contenu de last :", last);  //  KO UNDIFINED puis OK 
+ 
+
   return (
     <>
       <header>
@@ -122,13 +125,18 @@ const Page = () => {
         <div className="col presta">
           <h3>Notre derniére prestation</h3>
         
-  <EventCard
-    imageSrc={last?.cover}
-    title={last?.title}
-    date={new Date(last?.date)}
-    small
-    label="boom"
-  />
+          <Modal Content={<ModalEvent event={last} />}>
+  {({ setIsOpened }) => (
+    <EventCard
+      imageSrc={last?.cover}
+      title={last?.title}
+      date={new Date(last?.date)}
+      small
+      label="boom"
+      onClick={() => setIsOpened(true)}
+    />
+  )}
+</Modal>
 
 
 

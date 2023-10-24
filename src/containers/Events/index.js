@@ -77,7 +77,7 @@ const EventList = () => {
               <Modal key={event.id} Content={<ModalEvent event={event} />}>
                 {({ setIsOpened }) => (
                   <EventCard
-                    onClick={() => setIsOpened(true)}
+                    onClick={() => setIsOpened(true)}    
                     imageSrc={event.cover}
                     title={event.title}
                     date={new Date(event.date)}
