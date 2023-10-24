@@ -48,6 +48,7 @@ export const DataProvider = ({ children }) => {
  if (data === null) {
   return <div>Loading...</div>;
 }
+
   return (
     <DataContext.Provider value={contextValue}>{children}</DataContext.Provider>
   );
