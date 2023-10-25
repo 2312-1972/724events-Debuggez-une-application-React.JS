@@ -1,15 +1,21 @@
-/**
- * 
- */
+import { getMonth } from './index';
 
 describe("Date helper", () => {
     describe("When getMonth is called", () => {
-        it("the function return janvier for 2022-01-01 as date", () => {
-            // to implement
+        it("should return 'janvier' for date 2022-01-01", () => {
+            const date = new Date('2022-01-01');
+            const result = getMonth(date);
+             //  console.log pour afficher des informations de débogage
+             console.log('Result:', result);
+            expect(result).toBe('janvier');
         });
-        it("the function return juillet for 2022-07-08 as date", () => {
-            // to implement
+
+        it("should return 'juillet' for date 2022-07-08", () => {
+            const date = new Date('2022-07-08');
+            const result = getMonth(date);
+             //  console.log pour afficher des informations de débogage
+             console.log('Result:', result);
+            expect(result).toBe('juillet');
         });
     });
-})
-
+});

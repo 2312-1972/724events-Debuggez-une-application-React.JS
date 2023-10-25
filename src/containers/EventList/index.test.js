@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { api, DataProvider } from "../../contexts/DataContext";
-import Events from "./index";
+import EventList from "./index";
 
 const data = {
   events: [
@@ -42,7 +42,7 @@ describe("When Events is created", () => {
     api.loadData = jest.fn().mockReturnValue(data);
     render(
       <DataProvider>
-        <Events />
+        <EventList />
       </DataProvider>
     );
     await screen.findByText("avril");
@@ -52,7 +52,7 @@ describe("When Events is created", () => {
       api.loadData = jest.fn().mockRejectedValue();
       render(
         <DataProvider>
-          <Events />
+          <EventList />
         </DataProvider>
       );
       expect(await screen.findByText("An error occured")).toBeInTheDocument();
@@ -63,7 +63,7 @@ describe("When Events is created", () => {
       api.loadData = jest.fn().mockReturnValue(data);
       render(
         <DataProvider>
-          <Events />
+          <EventList />
         </DataProvider>
       );
       await screen.findByText("Forum #productCON");
@@ -92,7 +92,7 @@ describe("When Events is created", () => {
       api.loadData = jest.fn().mockReturnValue(data);
       render(
         <DataProvider>
-          <Events />
+          <EventList />
         </DataProvider>
       );
 
