@@ -125,22 +125,22 @@ const Page = () => {
         <div className="col presta">
           <h3>Notre derniére prestation</h3>
         
-          <Modal Content={<ModalEvent event={last} />}>
-  {({ setIsOpened }) => (
-    <EventCard
-      imageSrc={last?.cover}
-      title={last?.title}
-      date={new Date(last?.date)}
-      small
-      label="boom"
-      onClick={() => setIsOpened(true)}
-    />
-  )}
-</Modal>
+          {last && (
+  <Modal Content={<ModalEvent event={last} />}>
+    {({ setIsOpened }) => (
+      <EventCard
+        imageSrc={last.cover}
+        title={last.title}
+        date={new Date(last.date)}
+        small
+        label="boom"
+        onClick={() => setIsOpened(true)}
+      />
+    )}
+  </Modal>
+)}
 
-
-
-        </div>
+</div>
         <div className="col contact">
           <h3>Contactez-nous</h3>
           <address>45 avenue de la République, 75000 Paris</address>

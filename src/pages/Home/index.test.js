@@ -20,26 +20,26 @@ describe("When Form is created", () => {
   });
 });
 
-describe("When a page is created", () => {
-  it("a list of events is displayed", () => {
+// describe("When a page is created", () => {
+//   it("a list of events is displayed", () => {
     
-  //   render(<Home />);
-  //  fireEvent(screen.findByText("conférence"));
-    // to implement
-  });
-  it("a list a people is displayed", () => {
-    // render(<Home />);
-    // fireEvent(screen.findByText("Jean-baptiste"));
-    // to implement
-  });
-  it("a footer is displayed", () => {
-  //  render(<Home />);
-   // fireEvent(screen.findByText("Contactez-nous"));
-    // to implement
-  });
-  it("an event card, with the last event, is displayed", () => {
-  //  render(<Home />);
-    // fireEvent(screen.findByText("Notre derniére prestation"));
-    // to implement
-  });
-});
+//   //   render(<Home />);
+//   //  fireEvent(screen.findByText("conférence"));
+//     // to implement
+//   });
+//   it("a list a people is displayed", () => {
+//     // render(<Home />);
+//     // fireEvent(screen.findByText("Jean-baptiste"));
+//     // to implement
+//   });
+//   it("a footer is displayed", () => {
+//   //  render(<Home />);
+//    // fireEvent(screen.findByText("Contactez-nous"));
+//     // to implement
+//   });
+//   it("an event card, with the last event, is displayed", () => {
+//   //  render(<Home />);
+//     // fireEvent(screen.findByText("Notre derniére prestation"));
+//     // to implement
+//   });
+// });

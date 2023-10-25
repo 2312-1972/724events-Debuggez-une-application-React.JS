@@ -4,24 +4,18 @@ import Field, { FIELD_TYPES } from "../../components/Field";
 import Select from "../../components/Select";
 import Button, { BUTTON_TYPES } from "../../components/Button";
 
-const mockContactApi = () => new Promise((resolve) => {
-  setTimeout(() => {
-    resolve(); 
-  }, 1000);
-});
+const mockContactApi = () =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, 1000);
+  });
 
 const Form = ({ onSuccess, onError }) => {
   const [sending, setSending] = useState(false);
   const [errors, setErrors] = useState({});
 
- //  la fonction validEmail permet de vérifier si une adresse e-mail est bien formatée
-  const validEmail = (email) => {
-    //  Cette ligne crée une expression régulière qui correspond au format attendu d'une adresse e-mail. 
-    const emailFormat = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    //  Cette ligne utilise la méthode test de l'expression régulière pour vérifier si la chaîne 
-    //   de caractères email correspond au modèle défini
-    return emailFormat.test(email);
-  };
+  
 
   const sendContact = useCallback(
     async (evt) => {
@@ -29,29 +23,7 @@ const Form = ({ onSuccess, onError }) => {
       setSending(true);
       setErrors({});
 
-      const { nom, prenom, email, message } = evt.target;
-
-      const newAddErrors = {};
-
-      if (!nom.value) {
-        newAddErrors.nom = "Veuillez remplir ce champ.";
-      }
-
-      if (!prenom.value) {
-        newAddErrors.prenom = "Veuillez remplir ce champ.";
-      }
-
-      if (!validEmail(email.value)) {
-        newAddErrors.email = "Veuillez entrer une adresse e-mail valide (ex. exemple@email.com).";
-      }
-
-      if (!message.value) {
-        newAddErrors.message = "Veuillez entrer un message.";
-      }
-
-      setErrors(newAddErrors);
-
-      try {
+     try {
         await mockContactApi();
         setSending(false);
         evt.target.reset();
@@ -71,7 +43,9 @@ const Form = ({ onSuccess, onError }) => {
           <Field name="nom" placeholder="" label="Nom" />
           {errors.nom && <div className="error-message">{errors.nom}</div>}
           <Field name="prenom" placeholder="" label="Prénom" />
-          {errors.prenom && <div className="error-message">{errors.prenom}</div>}
+          {errors.prenom && (
+            <div className="error-message">{errors.prenom}</div>
+          )}
           <Select
             selection={["Personnel", "Entreprise"]}
             onChange={() => null}
@@ -96,7 +70,9 @@ const Form = ({ onSuccess, onError }) => {
             label="Message"
             type={FIELD_TYPES.TEXTAREA}
           />
-          {errors.message && <div className="error-message">{errors.message}</div>}
+          {errors.message && (
+            <div className="error-message">{errors.message}</div>
+          )}
         </div>
       </div>
     </form>

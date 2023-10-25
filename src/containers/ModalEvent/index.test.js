@@ -18,6 +18,7 @@ const data = {
   ],
 };
 
+
 describe("When Modal data is created", () => {
   it("a list of mandatories data is displayed", async () => {
     render(<ModalEvent event={data} />);

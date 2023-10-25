@@ -18,9 +18,13 @@ const Menu = () => (
         <a href="#notre-equipe">Notre équipe</a>
       </li>
     </ul>
-    <Button title="contact" onClick={() => (window.document.location.hash = "#contact")}>
-      Contact
-    </Button>
+    <Button title="contact" onClick={(event) => {
+  event.preventDefault();
+  window.location.hash = "#contact";
+}}>
+  Contact
+</Button>
+
   </nav>
 );
 
