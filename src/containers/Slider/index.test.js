@@ -1,6 +1,7 @@
-import { render, screen } from "@testing-library/react";
+import React from 'react';
+import { act, render, screen } from "@testing-library/react";
 import Slider, { getSortedData } from "./index";
-import {api, DataProvider } from "../../contexts/DataContext"; // Notez que nous n'importons plus `api`
+import {api, DataProvider } from "../../contexts/DataContext"; 
 
 
 const data = {
@@ -34,15 +35,18 @@ describe("When slider is created", () => {
     // Mocke api.loadData pour qu'il renvoie les données simulées
     api.loadData = jest.fn().mockReturnValue(data);
 
-    render(
-      <DataProvider>
-        <Slider />
-      </DataProvider>
-    );
+    act(() => {
+      render(
+        <DataProvider>
+          <Slider />
+        </DataProvider>
+      );
+    });
 
     const sortedData = getSortedData(); // Utilisez getSortedData pour obtenir les données triées
 
     console.log("Sorted Data:", sortedData); // Affiche les données triées dans la console
+
 
     //  waitFor pour attendre que le texte "World economic forum" soit présent.
     await screen.findByText("World economic forum");
