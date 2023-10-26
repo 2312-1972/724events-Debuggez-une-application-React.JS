@@ -44,3 +44,26 @@ describe("When Home is created", () => {
     });
   });
 });
+describe("When a page is created", () => {
+  it("a list of events is displayed",async () => {
+    render(<Home />);
+   screen.queryByText("Conférence #productCON")
+    // OK implemented
+    
+  })
+  it("a list a people is displayed",async () => {
+    render(<Home />);
+   screen.queryByText("Directeur Marketing")
+    // OK implemented
+  })
+  it("a footer is displayed",async () => {
+    render(<Home />);
+   screen.queryByText("Contactez-nous")
+    // OK implemented
+  })
+  it("an event card, with the last event, is displayed",async () => {
+    render(<Home />);
+   screen.queryByText("AVRIL")
+    // OK implemented
+  })
+});
