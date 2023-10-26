@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState} from "react";
 import EventCard from "../../components/EventCard";
 import Select from "../../components/Select";
 import { useData } from "../../contexts/DataContext";
@@ -52,12 +52,13 @@ const EventList = () => {
     // console.log("Changing type to:", evtType);        OK
   };
 
-  // useEffect(() => {
-  //   console.log("currentPage after setCurrentPage:", currentPage);     OK
-  //  }, [currentPage]);
+  //  useEffect(() => {
+  //   console.log("currentPage after setCurrentPage:", currentPage);     
+  //   }, [currentPage]);
 
   const pageNumber = Math.floor((filteredEvents?.length || 0) / PER_PAGE) + 1;
-  const typeList = new Set(data?.events.map((event) => event.type));
+  const typeList = new Set(data?.events?.map((event) => event.type) || []);
+
   return (
     <>
       {error && <div>An error occured</div>}
@@ -72,21 +73,26 @@ const EventList = () => {
               newValue ? changeType(newValue) : changeType(null)
             }
           />
-          <div id="events" className="ListContainer">
-            {filteredEvents.map((event) => (
-              <Modal key={event.id} Content={<ModalEvent event={event} />}>
-                {({ setIsOpened }) => (
-                  <EventCard
-                    onClick={() => setIsOpened(true)}    
-                    imageSrc={event.cover}
-                    title={event.title}
-                    date={new Date(event.date)}
-                    label={event.type}
-                  />
-                )}
-              </Modal>
-            ))}
-          </div>
+         <div id="events" className="ListContainer">
+  {filteredEvents ? (
+    filteredEvents.map((event) => (
+      <Modal key={event.id} Content={<ModalEvent event={event} />}>
+        {({ setIsOpened }) => (
+          <EventCard
+            onClick={() => setIsOpened(true)}    
+            imageSrc={event.cover}
+            title={event.title}
+            date={new Date(event.date)}
+            label={event.type}
+          />
+        )}
+      </Modal>
+    ))
+  ) : (
+    <div>No events to display.</div>
+  )}
+</div>
+
           <div className="Pagination">
             {[...Array(pageNumber || 0)].map((_, n) => (
               // eslint-disable-next-line react/no-array-index-key
