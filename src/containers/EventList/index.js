@@ -14,10 +14,9 @@ const EventList = () => {
   const [type, setType] = useState();
   const [currentPage, setCurrentPage] = useState(1);
 
-  // console.log("Selected Type:", type); //  OK
   const filteredEvents = data?.events
     .filter((event) => {
-      // bout de code manquant pour les filtres
+      //  code manquant pour les filtres
       if (!type || event.type === type) {
         return true;
       }
@@ -45,16 +44,11 @@ const EventList = () => {
     //  Utilisez setTimeout pour vérifier la valeur après un court délai  OK
     //  setTimeout(() => {
     //   console.log("currentPage after setCurrentPage:", currentPage);
-    //  }, 100);  Attendez 100 ms pour laisser le temps à l'état d'être mis à jour.    OK
+    //  }, 100);  Attend 100 ms pour laisser le temps à l'état d'être mis à jour.    OK
 
     setType(evtType);
-
-    // console.log("Changing type to:", evtType);        OK
+  // console.log("Changing type to:", evtType);        OK
   };
-
-  //  useEffect(() => {
-  //   console.log("currentPage after setCurrentPage:", currentPage);     
-  //   }, [currentPage]);
 
   const pageNumber = Math.floor((filteredEvents?.length || 0) / PER_PAGE) + 1;
   const typeList = new Set(data?.events?.map((event) => event.type) || []);
