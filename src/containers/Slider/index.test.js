@@ -40,12 +40,12 @@ describe("When slider is created", () => {
         // console.log pour vérifier mockdata.
         console.log("Mock data:", mockdata);
 
-    // Vous pouvez utiliser un data-testid pour chaque élément du slider.
+    //  utilisation d'un data-testid pour chaque élément du slider.
     const cardTitles = await screen.findAllByTestId("slide-card-title");
     const cardDescriptions = await screen.findAllByTestId("slide-card-description");
     const cardMonths = await screen.findAllByTestId("slide-card-month");
 
-    // Assurez-vous que le nombre de cartes correspond aux données.
+    // assure  que le nombre de cartes correspond aux données.
     expect(cardTitles).toHaveLength(mockdata.focus.length);
 
     // Vous pouvez également vérifier le contenu de chaque carte.
@@ -53,6 +53,6 @@ describe("When slider is created", () => {
     expect(cardDescriptions[0]).toHaveTextContent("Oeuvre à la coopération entre le secteur public et le privé.");
     expect(cardMonths[0]).toHaveTextContent("janvier");
 
-    // Vyarn testous pouvez répéter ces vérifications pour d'autres cartes si nécessaire.
+    
   });
 });

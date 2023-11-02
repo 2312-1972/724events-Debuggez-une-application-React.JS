@@ -20,10 +20,15 @@ const Menu = () => (
     </ul>
     <Button title="contact" onClick={(event) => {
   event.preventDefault();
-  window.location.hash = "#contact";
+  console.log("Bouton 'Contact' cliqué");
+  console.log("window.location.hash avant : ", window.location.hash);
+  window.location.hash = "#contactForm";
+  console.log("window.location.hash après : ", window.location.hash);
 }}>
   Contact
 </Button>
+
+
 
   </nav>
 );

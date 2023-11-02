@@ -12,5 +12,5 @@ export const MONTHS = {
   11: "novembre",
   12: "décembre",
 };
-
-export const getMonth = (date) => MONTHS[date.getMonth() + 1]; // On Ajoute 1 pour afficher le bon mois
+// On Ajoute 1 pour afficher le bon mois exemple: sinon 0=janvier 
+export const getMonth = (date) => MONTHS[date.getMonth() + 1]; 

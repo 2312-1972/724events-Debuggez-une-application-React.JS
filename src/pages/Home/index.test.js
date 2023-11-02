@@ -27,7 +27,7 @@ describe("When Home is created", () => {
         </Home>
       );
 
-      fireEvent.click(await screen.findByText("Envoyer")); // Trigger a click event
+      fireEvent.click(await screen.findByText("Envoyer")); // Déclenche un événement clic
 
       // Attend que le texte "En cours" apparaisse après le clic.
       await screen.findByText("En cours");
@@ -44,6 +44,7 @@ describe("When Home is created", () => {
     });
   });
 });
+// tests d'intégration 
 describe("When a page is created", () => {
   it("a list of events is displayed",async () => {
     render(<Home />);
